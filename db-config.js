@@ -3,7 +3,8 @@ var db = flatfile('/tmp/fire-bullet-bridge.db');
  
 exports.init = function() {
 	db.on('open', function() {
-	    console.log(db.get('hello')) // prints {world:1} 
+	    console.log("Connected to Flat File DB.");
 	});
 };
 
+exports.db = db;
