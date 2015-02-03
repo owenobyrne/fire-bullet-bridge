@@ -1,5 +1,9 @@
 # fire-bullet-bridge
 
+Run ```npm install``` to get all node dependencies installed.
+
+Run ```node app.js``` to start the server (port 3002 by default).
+
 List all business ID currently set up on the bridge
 ```bash
 curl -o - http://127.0.0.1:3002/businesses
