@@ -40,6 +40,16 @@ var findMatchingInvoice = function(webhook, invoices, bullethq) {
 	if (!found) {	
 		console.log("No matching invoices!");
 		console.log(webhook);
+		
+		var postmark = require("postmark")("YOURAPIKEY");
+		postmark.send({
+		    "From": "owen.obyrne@realexpayments.com", 
+		    "To":"owen.obyrne@gmail.com", 
+		    "Subject": "Lodgement Received", 
+		    "TextBody": "Hi Owen, a lodgement for " + webhook.amountBeforeFee / 100 + " " + webhook.currency.code + 
+		    	" was received from " + webhook.from.account.alias + " with the reference " + webhook.myRef + 
+		    	" but I couldn't match it with any outstanding invoices"
+		});
 	}
 		
 };
