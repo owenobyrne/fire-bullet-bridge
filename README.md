@@ -9,7 +9,7 @@ List all business ID currently set up on the bridge
 curl -o - http://127.0.0.1:3002/businesses
 ```
 
-Add the details of a new business. Returns the Business ID that can be used as the webhook URL.
+Add the details of a new BulletHQ business by setting the BulletHQ API details and the Fire API Private Token. Returns the Business ID that can be used as the webhook URL.
 ```bash
 curl -o - -H "Content-Type: application/json" --data '{"email":"email@gmail.com", "token":"19c8d4d1f4c4a98110", "businessid":"", "fireprivatetoken":"asjdk"}' http://127.0.0.1:3002/businesses
 ```
