@@ -28,7 +28,7 @@ var findMatchingInvoice = function(webhook, invoices, bullethq) {
 	invoices.forEach(function(invoice) {
 
 		// Must match amount, currency, and poNumber
-		if (parseFloat(invoice.outstandingAmount) == webhook.amount /100  && invoice.currency == webhook.currency && invoice.poNumber == webhook.ref) {
+		if (parseFloat(invoice.outstandingAmount) == webhook.amountBeforeFee /100  && invoice.currency == webhook.currency.code && invoice.poNumber == webhook.myRef) {
 			console.log("Match!");
 			found = 1;
 			console.log(invoice);	
@@ -53,7 +53,7 @@ var createPayment = function(webhook, invoice, bullethq) {
 		
 		bankAccounts.forEach(function(bankAccount) {
 			// Match it on the IBAN in the webhook
-			if (bankAccount.iban == webhook.iban) {
+			if (bankAccount.iban == webhook.to.account.iban) {
 				console.log("Found Matching Bank Account!");
 				console.log(bankAccount);
 
@@ -61,8 +61,8 @@ var createPayment = function(webhook, invoice, bullethq) {
 
 				// Pay the invoice.
 				bullethq.createClientPayment({
-					currency: webhook.currency,
-					amount: webhook.amount / 100,
+					currency: webhook.currency.code,
+					amount: webhook.amountBeforeFee / 100,
 					dateReceived: dateReceived,
 					clientId: invoice.clientId,
 					bankAccountId: bankAccount.id,
