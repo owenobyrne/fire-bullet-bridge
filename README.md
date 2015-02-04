@@ -1,4 +1,7 @@
 # fire-bullet-bridge
+A bridge between a Fire Business Account and BulletHQ. When a lodgement is received in your Fire account, a webhook call is made containing the details of the payment. 
+The bridge uses the BulletHQ API to check if this payment matches an open invoice based on the amount, currency and lodgement reference/PO Number. If so, a client payment
+against this invoice is made. Otherwise, an email is sent to the BulletHQ user email containing infomation about the payment made.  
 
 Run ```npm install``` to get all node dependencies installed.
 
