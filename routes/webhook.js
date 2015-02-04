@@ -9,7 +9,8 @@ exports.get = function(req, res){
 	bullethq.initialize(config.email, config.token, config.businessid);
 
 	// Decode the webhook from the JWT
-	var webhook = jwt.verify(req.rawBody, config.fireprivatetoken);
+	console.log(req.body.toString());
+	var webhook = jwt.verify(req.body.toString(), config.fireprivatetoken);
 	console.log(webhook);
 
 	bullethq.listAllInvoices(function(err, invoices) {
@@ -41,7 +42,7 @@ var findMatchingInvoice = function(webhook, invoices, bullethq) {
 		console.log("No matching invoices!");
 		console.log(webhook);
 		
-		var postmark = require("postmark")("YOURAPIKEY");
+		var postmark = require("postmark")("APIKEY");
 		postmark.send({
 		    "From": "owen.obyrne@realexpayments.com", 
 		    "To":"owen.obyrne@gmail.com", 
