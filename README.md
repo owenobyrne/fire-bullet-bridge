@@ -3,6 +3,12 @@ A bridge between a Fire Business Account and BulletHQ. When a lodgement is recei
 The bridge uses the BulletHQ API to check if this payment matches an open invoice based on the amount, currency and lodgement reference/PO Number. If so, a client payment
 against this invoice is made. Otherwise, an email is sent to the BulletHQ user email containing infomation about the payment made.  
 
+Have Node installed first, then pull the code to your server:
+```bash
+git clone https://github.com/owenobyrne/fire-bullet-bridge.git
+cd fire-bullet-bridge
+```
+
 Run ```npm install``` to get all node dependencies installed.
 
 Run ```node app.js``` to start the server (port 3002 by default).
