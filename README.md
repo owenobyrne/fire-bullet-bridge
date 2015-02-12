@@ -11,6 +11,8 @@ cd fire-bullet-bridge
 
 Run ```npm install``` to get all node dependencies installed.
 
+ANNOYING: Requestify doesn't work with node 0.12, so you have to go into the node_packages dir and update the requestify dependency on jQuery to 1.11 rather than 1.8.3, then run npm install on that.
+
 Run ```node app.js``` to start the server (port 3002 by default).
 
 List all business ID currently set up on the bridge
